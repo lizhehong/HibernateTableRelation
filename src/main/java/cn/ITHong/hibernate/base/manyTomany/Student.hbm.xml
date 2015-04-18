@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-16 21:00:14 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.ITHong.hibernate.base.manyTomany.Student" table="STUDENT">
+        <id name="sid" type="java.lang.Long">
+            <column name="SID" />
+            <generator class="increment" />
+        </id>
+        <property name="sname" type="java.lang.String">
+            <column name="SNAME" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+         <!-- 
+        	table 就是用来描述第三张表的
+        	外键是 SID
+        	多对多是 CID
+         -->
+        <set name="courses" table="student_course" cascade="save-update" >
+            <key>
+                <column name="SID" />
+            </key>
+            <many-to-many class="cn.ITHong.hibernate.base.manyTomany.Course" column="CID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

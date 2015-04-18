@@ -1,0 +1,32 @@
+2015/4/18 12:56
+1.
+	cn.ITHong.hibernate.base.util.HibernateUtils
+	添加了对 url的选择配置
+		如果url没有写 则用默认路径 配置hibernate.cfg.xml
+		如果url写了 则用url的路径
+2.懒加载
+		cn.ITHong.hibernate.base.optimize
+		添加了此包 用于hibernate 一对多 多对多 的优化
+		此包中应该加入
+			类的懒加载
+			集合的懒加载
+			单端关联的懒加载(多对一)
+		cn.ITHong.hibernate.base.LazyTest(类的懒加载测试,集合的懒加载测试)
+		集合的懒加载
+			false
+				当session.get时,集合就被加载出来的
+			true
+				在遍历集合的时候才加载
+			extra
+				针对集合做count,min,max,sun等操作
+		
+		
+		单端关联的懒加载(多对一)(不测试)
+					<many-to-one class="cn.ITHong.hibernate.base.optimize.oneTomany.Classes"
+							name="classes" cascade="save-update" column="CID" lazy="false/no-proxy/proxy">
+					</many-to-one>
+			请注意 lazy="false/no-proxy/proxy" 三个值可选
+			默认值为 true
+			因为 根据多的一端加载一的一端，就一个数据，所以无所谓效率
+		懒加载总结
+			懒加载主要解决一个问题:类，集合，many-to-one在时候发出sql语句，加载数据
