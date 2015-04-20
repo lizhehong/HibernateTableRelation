@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-4-15 19:11:52 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="cn.ITHong.hibernate.base.optimize.oneTomany.Classes" table="CLASSES">
+    <class name="cn.ITHong.hibernate.base.optimize.fetch.oneTomany.Classes" table="CLASSES">
         <id name="cid" type="java.lang.Long">
             <column name="CID" />
             <generator class="increment" />
@@ -37,12 +37,16 @@
 			 	默认：true 懒加载 延时
 			 		false 不懒加载 不延时  
 			 		extra 更进一步的懒加载
+			 fetch: 
+			 		join:左外连接
+					select:默认
+					subselect：子查询
 		 -->
-        <set name="students"  cascade="save-update" inverse="false" lazy="true">
+        <set name="students"  cascade="save-update" inverse="false" lazy="true" fetch="join">
             <key>
                 <column name="CID" />
             </key>
-            <one-to-many class="cn.ITHong.hibernate.base.optimize.oneTomany.Student"/>
+            <one-to-many class="cn.ITHong.hibernate.base.optimize.fetch.oneTomany.Student"/>
         </set>
     </class>
 </hibernate-mapping>
