@@ -17,8 +17,10 @@ public class LazyTest extends HibernateUtils {
 	}
 
 	/**
-	 * 测试作用 类的懒加载 除了session.get 还有 session.load 懒加载 1、利用session.load方法可以产生代理对象
-	 * 2、在session.load方法执行的时候并不发出sql语句 3、在得到其一般属性的时候发出sql语句
+	 * 测试作用 类的懒加载 除了session.get 还有 session.load 懒加载
+	 * 1、利用session.load方法可以产生代理对象
+	 * 2、在session.load方法执行的时候并不发出sql语句 
+	 * 3、在得到其一般属性的时候发出sql语句(请注意哦！！！！！)
 	 * 4、只针对一般属性有效，针对标识符属性是无效的 5、默认情况就是懒加载
 	 * */
 	@Test
