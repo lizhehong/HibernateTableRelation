@@ -1,0 +1,9 @@
+查询缓存----->用于大量的包边查询(效率非常棒)
+	1.开启查询缓存(默认是关闭的)
+		<property name="cache.use_query_cache">true</property>
+	2.建立在二级缓存只上的，必须有了二级缓存，才能有查询缓存
+	3.只能在session.createQuery方法使用
+	4.注意createQuery方法中的是HQL语句 所以写的时候请于类中的名字和属性对应
+		不要看数据库的列名
+	5.createQuery 里面的HQL一致时 查询缓存才有作用
+	

@@ -3,7 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-4-15 19:11:52 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Classes" table="CLASSES">
+    <class name="cn.ITHong.hibernate.base.optimize.querycache.oneTomany.Classes" table="CLASSES">
+       	<!-- 开启二级缓存 -->
+       <cache usage="read-write"/>
         <id name="cid" type="java.lang.Long">
             <column name="CID" />
             <generator class="increment" />
@@ -46,7 +48,7 @@
             <key>
                 <column name="CID" />
             </key>
-            <one-to-many class="cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Student"/>
+            <one-to-many class="cn.ITHong.hibernate.base.optimize.querycache.oneTomany.Student"/>
         </set>
     </class>
 </hibernate-mapping>

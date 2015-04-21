@@ -1,4 +1,4 @@
-package cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy;
+package cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany;
 
 import java.util.Set;
 

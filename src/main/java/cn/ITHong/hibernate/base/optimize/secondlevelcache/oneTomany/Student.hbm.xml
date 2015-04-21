@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-4-15 19:11:52 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-	<class name="cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Student" table="STUDENT">
+	<class name="cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Student" table="STUDENT">
 		<id name="sid" type="java.lang.Long">
 			<column name="SID" />
 			<generator class="increment" />
@@ -15,7 +15,7 @@
 			<column name="DESCRIPTION" />
 		</property>
 		<!-- 多对一 column 外键 -->
-		<many-to-one class="cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Classes"
+		<many-to-one class="cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Classes"
 			name="classes" cascade="save-update" column="CID">
 		</many-to-one>
 	</class>

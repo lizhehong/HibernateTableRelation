@@ -1,4 +1,4 @@
-package cn.ITHong.hibernate.base;
+package cn.ITHong.hibernate.base.session;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

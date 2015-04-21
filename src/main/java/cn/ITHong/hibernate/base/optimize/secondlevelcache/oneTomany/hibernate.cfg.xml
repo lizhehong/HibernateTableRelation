@@ -12,9 +12,16 @@
 		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<!-- 告诉hibernate session由当前线程产生 -->
 		<property name="current_session_context_class">thread</property>
-		<mapping resource="cn/ITHong/hibernate/base/optimize/session/cache/oneTomany/copy/Classes.hbm.xml" />
-		<mapping resource="cn/ITHong/hibernate/base/optimize/session/cache/oneTomany/copy/Student.hbm.xml" />
+		<!-- 开启缓存供应商 -->
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<!-- 开启二级缓存 -->
+		<property name="cache.use_second_level_cache">true</property>
+		
+		<mapping resource="cn/ITHong/hibernate/base/optimize/secondlevelcache/oneTomany/Classes.hbm.xml" />
+		<mapping resource="cn/ITHong/hibernate/base/optimize/secondlevelcache/oneTomany/Student.hbm.xml" />
+		
+		<!-- 让某一个对象进入二级缓存 并且只能凡在mapping配置之后 -->
+		<!-- <class-cache usage="read-only" class="cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Classes"/> -->
 	</session-factory>
 </hibernate-configuration>

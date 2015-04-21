@@ -59,7 +59,12 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-
+		<!-- 二级缓存供应商 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>3.6.10.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

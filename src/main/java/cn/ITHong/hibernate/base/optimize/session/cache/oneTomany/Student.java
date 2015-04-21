@@ -1,4 +1,4 @@
-package cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy;
+package cn.ITHong.hibernate.base.optimize.session.cache.oneTomany;
 /**
  * 相对于Hibernate_hong_base改进了 
  * 加入

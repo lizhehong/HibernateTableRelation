@@ -1,0 +1,21 @@
+1.CurrentSessiond的正确写法(测试结果所得cn/ITHong/hibernate/base/SessionTest.java)
+		1.必须在hibernate.cfg.xml中配置
+	 		<property name="current_session_context_class">thread</property>
+		2.必须写transaction
+		3.不要写 session.close();
+	
+		Session session = sessionFactory.getCurrentSession();		
+		Transaction transaction = session.beginTransaction();
+		/*													
+					请在这里写入需要的代码
+		
+		*/
+		transaction.commit();
+	小总结：session和transaction绑定在一起了 
+			1.session要使用必须起transaction	transaction.commit();则session自动关闭
+			2.说明了hibernate内部让客户端强制使用事务
+			3.CRUD都需要事务
+				1.因为浏览器 请求 服务器 都是一个个线程 ,所以整个方法中只有一个session，能保证一个事务
+				2.保证了整个业务操作的安全性
+	目前为止
+		session:产生方式共两种

@@ -1,4 +1,4 @@
-package cn.ITHong.hibernate.base;
+package cn.ITHong.hibernate.base.session.cache;
 
 import static org.junit.Assert.*;
 
@@ -9,23 +9,26 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-import cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Classes;
-import cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Student;
+import cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.Classes;
+import cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.Student;
 import cn.ITHong.hibernate.base.util.HibernateUtils;
+import cn.ITHong.hibernate.itest.ICacheTest;
 /**
  * session缓存研究
  * 总结：hibernate 的操作
  * 切记 有缓存的存在
  * 如果对其CRUD 首先是对缓存的CRUD 再次才是数据库的
  * */
-public class SessionCacheTest extends HibernateUtils{
+public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	static{
 		url="cn/ITHong/hibernate/base/optimize/session/cache/oneTomany/copy/hibernate.cfg.xml";
 	}
 	
-	/**
-	 * session.get方法把数据存放到一级缓存中了
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testGet</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testGet() 
+	*/
 	@Test
 	public void testGet() {
 		Session session  = sessionFactory.openSession();
@@ -35,10 +38,11 @@ public class SessionCacheTest extends HibernateUtils{
 		transaction.commit();
 	}
 	
-	/**
-	 * session.loa方法把数据存放到一级缓存中了
-	 * 因为只发出一次SQL语句
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testLoad</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testLoad() 
+	*/
 	@Test
 	public void testLoad() {
 		Session session  = sessionFactory.openSession();
@@ -49,13 +53,11 @@ public class SessionCacheTest extends HibernateUtils{
 		classes.getCname();
 		transaction.commit();
 	}
-	/**
-	 * 在transaction.commit();前的
-	 * classes = (Classes) session.get(Classes.class, classes.getCid());
-	 * 是不发出SQL语句的 所以说明 这个语句 直接在内存中拿数据 不用去数据库拿
-	 * 
-	 * session.save方法把数据保存在一级缓存中
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testSave</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testSave() 
+	*/
 	@Test
 	public void testSave() {
 		Session session  = sessionFactory.openSession();
@@ -67,9 +69,11 @@ public class SessionCacheTest extends HibernateUtils{
 		classes = (Classes) session.get(Classes.class, classes.getCid());
 		transaction.commit();
 	}
-	/**
-	 * session.update(classes);//把classes对象放进一级缓存中
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testUpdate</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testUpdate() 
+	*/
 	@Test
 	public void testUpdate() {
 		Session session  = sessionFactory.openSession();
@@ -81,9 +85,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.get(Classes.class, classes.getCid());
 		transaction.commit();
 	}
-	/**
-	 * 肯定发出两次SQL语句
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testClear</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testClear() 
+	*/
 	@Test
 	public void testClear() {
 		Session session  = sessionFactory.openSession();
@@ -94,14 +100,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.get(Classes.class, classes.getCid());
 		transaction.commit();
 	}
-	/**
-	 * 异常
-	 * org.hibernate.NonUniqueObjectException: 
-	 * a different object with the same identifier value was already associated with the session: 
-	 * [cn.ITHong.hibernate.base.optimize.session.cache.oneTomany.copy.Classes#1]
-	 * 因为两个持久化对象标识符相同
-	 *
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testClearTest</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testClearTest() 
+	*/
 	@Test
 	public void testClearTest() {
 		Session session  = sessionFactory.openSession();
@@ -115,15 +118,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.update(classes2);
 		transaction.commit();
 	}
-	/**
-	 *解决testClearTest异常 但是 因为本来存在的数据1l 就会被
-	 *新new的classes对象取代
-	 *强调：
-	 *		hibernate 持久化对象	不能存在同一样标识符
-	 *		数据库	不能存在同一样的标识符	或联合主键
-	 *		所以	不清除session缓存而执行的	操作时优先于数据库操作的
-	 *		接着才是数据库操作
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testClearTest_2</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testClearTest_2() 
+	*/
 	@Test
 	public void testClearTest_2() {
 		Session session  = sessionFactory.openSession();
@@ -138,10 +137,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.update(classes2);
 		transaction.commit();
 	}
-	/**
-	 * 把数据库中的数据刷新到缓存中
-	 * classes.setCname("uuuuu");无效果
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testRefresh</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testRefresh() 
+	*/
 	@Test
 	public void testRefresh(){
 		Session session = sessionFactory.openSession();
@@ -153,12 +153,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.refresh(classes);
 		transaction.commit();
 	}
-	/**
-	 * session.flush();
-	 * 只管 save.update()	session.save()	session.delete()
-	 * 不管 save.get	save.load
-	 * 把缓存中的数据刷新到数据库中
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testFlush</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testFlush() 
+	*/
 	@Test
 	public void testFlush(){
 		Session session = sessionFactory.openSession();
@@ -173,9 +172,11 @@ public class SessionCacheTest extends HibernateUtils{
 		session.flush();
 		transaction.commit();
 	}
-	/**
-	 * 批量查询 (导致内存溢出)
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testSaveBatch</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testSaveBatch() 
+	*/
 	@Test
 	public void testSaveBatch(){
 		Session session = sessionFactory.openSession();
@@ -190,9 +191,11 @@ public class SessionCacheTest extends HibernateUtils{
 		transaction.commit();
 	
 	}
-	/**
-	 * 批量查询 (防止内存溢出)
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testSaveBatch_2</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testSaveBatch_2() 
+	*/
 	@Test
 	public void testSaveBatch_2(){
 		Session session = sessionFactory.openSession();
@@ -211,10 +214,11 @@ public class SessionCacheTest extends HibernateUtils{
 		transaction.commit();
 	
 	}
-	/**
-	 * 测试flush 是否清空缓存
-	 * 实际测试 没有清空缓存
-	 * */
+	/* (非 Javadoc) 
+	* <p>Title: testFlush_3</p> 
+	* <p>Description: </p>  
+	* @see cn.ITHong.hibernate.base.ICacheTest#testFlush_3() 
+	*/
 	@Test
 	public void testFlush_3(){
 		Session session = sessionFactory.openSession();
