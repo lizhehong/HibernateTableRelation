@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-15 19:11:52 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.ITHong.hibernate.base.oneTomany.Classes" table="CLASSES">
+        <id name="cid" type="java.lang.Long">
+            <column name="CID" />
+            <generator class="increment" />
+        </id>
+        <property name="cname" type="java.lang.String">
+            <column name="CNAME" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <!-- 
+			set元素对应类中的set集合
+			通过set元素使classes表与student表建立关联
+			   key是通过外键的形式让两张表建立关联
+			   one-to-many是通过类的形式让两个类建立关联
+			
+			cascade 级联 除了关联的ID  其他都会涉及
+			   save-update
+			   	1、当 保存班级的时候，对学生进行怎么样的操作
+			   	     如果学生对象在数据库中没有对应的值，这个时候会执行save操作
+			   	     如果学生对象在数据库中有对应的值，这个时候会执行update操作
+			   delete
+			   all
+			   	1.保存班级和更新班级的时候能跟新和存学生，我在删除班级额同时，
+			   	也能删除学生
+			inverse  维护关系  
+			   true      不维护关系     不会更新关联的ID 
+			   false     维护关系 更新 关联的ID 
+			   default   false
+		 -->
+        <set name="students"  cascade="save-update" inverse="false">
+            <key>
+                <column name="CID" />
+            </key>
+            <one-to-many class="cn.ITHong.hibernate.base.oneTomany.Student"/>
+        </set>
+    </class>
+</hibernate-mapping>

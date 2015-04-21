@@ -1,0 +1,29 @@
+session缓存：
+	1生命周期就是session的生命周期
+		从sessionFactory.getCurrentSession();开始
+		从session.close();结束
+	2.一级缓存存放的数据都是私有数据
+		把session存放在threadlocal中，不同的线程是不能访问的，所以
+		保证了安全性
+	3.怎么办数据存放到一级缓存中
+		利用sesion.save/update/load/get方法都可以存放在一级缓存中
+	4.利用session.get/load方法可以把数据从一级缓存中取出
+	5.利用session.evict方法可以把一个对象从一级缓存中清空
+	6.利用session.clear方法可以把session缓存清空
+	7.利用session.Refresh方法 数据库和缓存同步
+	8.session.flush
+		在session缓存内部，会检查所有的持久化对象
+			1.如果一个持久化对象没有ID值,会执行insert语句
+			2.如果一个持久化对象存在ID值,会检查快照进行对比，
+					如果一样则什么都不做，
+					如果不一样则发出SQL
+			3.会去检查所有的持久化对象，是否存在关联对象，	
+				会检查关联对象的级联操作	cascade
+				会检查关联对象的关系操作	inverse
+	9.批量操作
+		内存溢出为题
+			解决方案：	判断数量级到一定程度就flush
+					但是flush不清空缓存
+					所以flush后必须用clear方法
+				
+		

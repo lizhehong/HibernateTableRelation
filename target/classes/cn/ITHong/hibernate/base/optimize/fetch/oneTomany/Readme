@@ -1,0 +1,57 @@
+1.抓取策略测试
+	会报错
+	java.lang.StackOverflowError
+	原因
+	原因就是两个对象的toString方法都重写之后， 应用程序递归太深了， 所以发生了堆栈溢出。 解决方法就是将多的一方对象里面重写
+	的toString方法去掉， 或者两个对象里面重写的toString方法都去掉。 就ok了
+	所以只需要把student的 tostring注销就行了 本来是存在的
+	或者 直接 输出 属性 就不会报错
+2.抓取策略研究
+	1.研究的主要是set集合如何提取数据
+	2.在Classes.hbm.xml文件中
+		<set fetch="join/select/subselect">
+		join:左外连接
+			如果 把需求分析 翻译成SQL语句 ，存在子查询，这个时候用该策略不起作用
+			一般都是用在session.get方法中 或者sql语句有 on的
+		select:默认
+			先查询一的一端 在查询多的一端
+		
+		subselect：子查询(最简单)
+					如果给你需求，你发现需求翻译成SQL语句，里面含有子查询，那么肯定用这个，效率比较高
+					子查询
+					ex: select * from student where cid in(select cid from classes)
+3.懒加载和抓取策略
+	前者	解决	在时候发出SQL语句
+	后者	解决	怎么样发出SQL语句
+4.抓取策略研究的主要是set集合如何提取数据 而在企业中 主要是 懒加载+抓取策略 所以 懒加载研究集合懒加载
+	所以
+		****************************************
+		
+		**********懒加载+抓取策略=研究set集合**********
+		
+		****************************************
+		序号		fetch		lazy		sql			什么时候发出sql								说明
+		1		join		false		存在子查询		当查询classes时把classes和student全部查询出来	join没用
+		2		join		true		存在子查询		遍历student发出查询student					join没用	
+		3		join		true		没有子查询		session.get(classes)时，全部查询			lazy没用
+		4		subselect	true/false	存在子查询		发出两条SQL语句								如果lazy=true,遍历集合
+																							如果lazy=false,在一开始发出
+		5		select		true/false	存在子查询		发出n+1条SQL								如果lazy=true,遍历集合
+																							如果lazy=false,在一开始发出
+		6		select		true/false	没有子查询		发出两条SQL语句
+		
+		
+		总结：如果需求出现子查询SQL 我们应该立即用 subselect	所以 lazy 没有任何意义了
+			如果不存在子查询 则看页面设计 ，由页面的设计 来决定 lazy 的值
+			页面是 		
+			第一种（lazy=false）：一次性全部加载
+				学生名称		学生性别		班级名称
+			
+			第二种（lazy=true）：分别加载
+				存在某一个班级信息	通过按钮查询学生信息
+				
+				在另一个视图
+				学生信息
+5.请注意hibernate映射文件是不能改变的，不能说为了适应查询，配置文件随时改
+	实际上抓取策略能做的东西，sql都能做，所以必须理解，抓取策略是hibernate给与的一种优化方式
+	所以，只有当项目中有大量的子查询，采用subselect，这样才能够提高效率

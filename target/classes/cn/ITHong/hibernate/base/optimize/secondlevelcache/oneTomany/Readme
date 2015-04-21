@@ -1,0 +1,41 @@
+二级缓存存放的是共有数据
+1.使用场合：
+		1.数据频繁更新
+		2.数据能公开，私密性不是很强
+2.hibernate本身并没有提供二级缓存的解决方案
+3.二级缓存的实现是依赖于第三方供应商完成的
+		ehcache:不考虑分布式缓存，建议用这个
+		oscache
+		jbosscache
+		swamcache
+4.二级缓存的操作
+		1.二级缓存存在sessionFactory,sessionfactory本身就是存放共享数据的地方
+		2.生命周期与sessionFactory一致
+		3.使用二级缓存的步骤
+			1.在hibernate.cfg.xml
+				<property name="cache.provider_class">输入全类名</property>
+				<property name="cache.use_second_level_cache">true</property>
+			2.让某一个对象进入二级缓存中
+				给classes开启二级缓存
+					1.方案一
+						在hibernate.cfg.xml
+						<class-cache usage="read-only" class="cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Classes"/>
+					2.方案二(推荐)
+						在映射文件中如：Classes.hbm.xml中	
+						<cache usage="read-only"/>
+					3.属性讲解
+						usage(缓存策略)：
+							nonstrict-read-write:	不严格读写(有幻读，脏读)
+							read-only:				只读缓存
+							read-write:				读写缓存
+							transactional:			最严格的
+			3.二级缓存的使用
+						需要jar包	测试过jar包 发现4版本后开始就没有了
+						org.hibernate.cache.EhCacheProvider
+						所以只用了3.6.10
+						session.get/load方法
+			4.二级缓存以后都是在hibernate启动时就填充了
+				例如
+					页面级的权限控制
+4.查询缓存
+		1.建立在二级缓存只上的，必须有了二级缓存，才能有查询缓存

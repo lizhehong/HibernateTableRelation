@@ -1,0 +1,26 @@
+2.懒加载
+		cn.ITHong.hibernate.base.optimize
+		添加了此包 用于hibernate 一对多 多对多 的优化
+		此包中应该加入
+			类的懒加载
+			集合的懒加载
+			单端关联的懒加载(多对一)
+		cn.ITHong.hibernate.base.LazyTest(类的懒加载测试,集合的懒加载测试)
+		集合的懒加载
+			false
+				当session.get时,集合就被加载出来的	不懒加载 不延时  
+			true(默认)
+				在遍历集合的时候才加载	懒加载 延时
+			extra
+				针对集合做count,min,max,sun等操作	更进一步的懒加载
+		
+		
+		单端关联的懒加载(多对一)(不测试)
+					<many-to-one class="cn.ITHong.hibernate.base.optimize.oneTomany.Classes"
+							name="classes" cascade="save-update" column="CID" lazy="false/no-proxy/proxy">
+					</many-to-one>
+			请注意 lazy="false/no-proxy/proxy" 三个值可选
+			默认值为 true
+			因为 根据多的一端加载一的一端，就一个数据，所以无所谓效率
+		懒加载总结
+			懒加载主要解决一个问题:类，集合，many-to-one在时候发出sql语句，加载数据
