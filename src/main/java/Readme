@@ -1,3 +1,9 @@
+2015/4/24	14:51
+加入	cn.ITHong.hibernate.base.hql.manyTomany
+目标	一对多 多对多	有了	CLasses	Course	Student
+测试	/HibernateTableRelation/src/test/java/cn/ITHong/hibernate/base/hql/manyTomany/ManyToManyTest.java
+总结：三张或三张以上的表 查询时 找中间表
+对于重复的元素 可以用 消除重复元素的方法
 2015/4/24	08:30
 1.HQL 返回select 返回Object[]
 2.HQL语句+fetch	返回对象

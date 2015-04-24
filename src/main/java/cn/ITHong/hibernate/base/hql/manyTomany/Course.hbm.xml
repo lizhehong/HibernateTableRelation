@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-24 9:48:04 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.ITHong.hibernate.base.hql.manyTomany.Course" table="COURSE">
+        <id name="cid" type="java.lang.Long">
+            <column name="CID" />
+            <generator class="assigned" />
+        </id>
+        <property name="cname" type="java.lang.String">
+            <column name="CNAME" />
+        </property>
+        <property name="desciprtion" type="java.lang.String">
+            <column name="DESCIPRTION" />
+        </property>
+        <set name="students" table="student_course" >
+            <key>
+                <column name="CID" />
+            </key>
+            <many-to-many class="cn.ITHong.hibernate.base.hql.manyTomany.Student" column="SID" />
+        </set>
+    </class>
+</hibernate-mapping>
