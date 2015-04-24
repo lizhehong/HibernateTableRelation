@@ -2,11 +2,10 @@ package cn.ITHong.hibernate.base.secondcache;
 
 import static org.junit.Assert.*;
 
-import java.util.Set;
-import java.util.UUID;
+
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 import org.junit.Test;
 
 

@@ -1,0 +1,23 @@
+这个包是由cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany
+扩展而来
+主要是为了实现解决session.createQuery("")里面使用select带查询列名返返回Object[]
+解决方案
+	1.修改CLasses	
+		1.添加带有所需查询列名的构造函数，依赖注入
+		2.空的构造函数
+		3.select语句应该写成 select new +全类名+(属性名1,属性名2) from 类名
+		4.注意
+			select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes
+			必须和带参数的构造函数参数名顺序相同
+			public Classes(long cid,String cname) {
+				super();
+				this.cname = cname;
+				this.cid = cid;
+			}
+			如果不同则报错
+			org.hibernate.hql.ast.QuerySyntaxException: 
+			Unable to locate appropriate constructor on class 
+			[cn.ITHong.hibernate.base.hql.oneTomany.Classes] 
+			[select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from cn.ITHong.hibernate.base.hql.oneTomany.Classes]
+	2.在SQL中加入 fetch 关键字 对应的HQL名字则为 迫切内连接和迫切做外连接(对应全列名查询)
+	3.如果需要带参数的 则还是需要对应对象的带参构造器(记得参数)

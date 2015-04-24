@@ -1,0 +1,24 @@
+测试1和2在debug看到的结果
+1.测试：
+	List<Classes> cList = session.createQuery("from Classes").list();
+结果：以对象返回
+	[Classes [cid=1, cname=95442d70-95a6-4871-adaa-0470fd93e38d, description=百万条数据测试, students=[]]
+
+
+2.测试：
+	List<Classes> cList = session.createQuery("select cid,cname from Classes").list();
+结果：以数组返回	Object[]
+	[[Ljava.lang.Object;@788fcafb, [Ljava.lang.Object;@4febb875, [Ljava.lang.Object;@25e2a451, null, null, null, null, null, null, null]
+	[1, 95442d70-95a6-4871-adaa-0470fd93e38d]
+
+HQLTest1的建立是为了区别HQLTest 调用的classes是import cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Classes;
+HQLTest1使用的是cn.ITHong.hibernate.base.hql.oneTomany
+
+3.测试:
+	在HQL中加入自定义命名的标示，在外部定义其值(注意在自定义的东东家“:”)
+	select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes where cid=:cid
+	如果报错则
+	可能是写成
+	select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes where cid=cid
+	报错东东
+	java.lang.IllegalArgumentException: Parameter cid does not exist as a named parameter in [select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes where cid=cid]

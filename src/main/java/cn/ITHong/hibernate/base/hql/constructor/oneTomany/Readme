@@ -1,0 +1,10 @@
+为了适应
+HQL 包含 特定列名的查询并返回对象
+又不改变	cn.ITHong.hibernate.base.hql.HQLTest1测试结构
+
+所以这个包用于	测试
+cn.ITHong.hibernate.base.hql.OneToManyTest
+错误报告
+	org.hibernate.QueryException: 
+	query specified join fetching, but the owner of the fetched association was not present in the select list
+	[FromElement{explicit,not a collection join,fetch join,fetch non-lazy properties,classAlias=c,role=null,tableName=CLASSES,tableAlias=classes1_,origin=STUDENT student0_,columns={student0_.CID ,className=cn.ITHong.hibernate.base.hql.oneTomany.Classes}}] [select new cn.ITHong.hibernate.base.hql.constructor.oneTomany.CLassView (c.cname,s.sname) from cn.ITHong.hibernate.base.hql.oneTomany.Student s left outer join fetch s.classes c]

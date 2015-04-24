@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="">
+		<!-- Database connection settings -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate4</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">a8922993</property>
+		<!-- 根据持久化类和映射文件生成表 validate：只验证不生成 create-drop:启动hibernate生成表 关闭删除 create：只要启动hibernate就生成表 
+			update：启动hibernate检查持久化类是否对应 不对应则创建 -->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+		<!-- 开启缓存供应商 -->
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<!-- 开启二级缓存 -->
+		<property name="cache.use_second_level_cache">true</property>
+		
+		<mapping resource="cn/ITHong/hibernate/base/hql/constructor/oneTomany/Classes.hbm.xml" />
+		<mapping resource="cn/ITHong/hibernate/base/hql/constructor/oneTomany/Student.hbm.xml" />
+		
+		<!-- 让某一个对象进入二级缓存 并且只能凡在mapping配置之后 -->
+		<!-- <class-cache usage="read-only" class="cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany.Classes"/> -->
+	</session-factory>
+</hibernate-configuration>

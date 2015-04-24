@@ -1,4 +1,4 @@
-package cn.ITHong.hibernate.base.optimize.secondlevelcache.oneTomany;
+package cn.ITHong.hibernate.base.hql.constructor.oneTomany;
 
 import java.util.Set;
 
@@ -6,6 +6,11 @@ public class Classes {
 	private Long cid;
 	private String cname;
 	private String description;
+	
+
+	public Classes() {
+		super();
+	}
 
 	public Long getCid() {
 		return cid;
@@ -41,10 +46,10 @@ public class Classes {
 
 	private Set<Student> students;
 
-//	@Override
-//	public String toString() {
-//		return "Classes [cid=" + cid + ", cname=" + cname + ", description="
-//				+ description + ", students=" + students + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Classes [cid=" + cid + ", cname=" + cname + ", description="
+				+ description + ", students=" + students + "]";
+	}
 	
 }

@@ -1,3 +1,18 @@
+2015/4/24	08:30
+1.HQL 返回select 返回Object[]
+2.HQL语句+fetch	返回对象
+3.HQL语句	+ new +全类名 形式的 解决返回形式为对象 可以用于 指定列名的查询(指定类名请于构造器参数顺序一样) 记得在需要
+	指定列名查询的类中加上参数构造器
+
+2015/4/22 15:09
+异常报告：
+java.lang.NoClassDefFoundError: org/slf4j/impl/StaticLoggerBinder
+缺少
+<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+</dependency>
 2015/4/21 09:07
 1.二级缓存存放的是共有数据
 	1.使用场合
