@@ -22,3 +22,13 @@ HQLTest1使用的是cn.ITHong.hibernate.base.hql.oneTomany
 	select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes where cid=cid
 	报错东东
 	java.lang.IllegalArgumentException: Parameter cid does not exist as a named parameter in [select new cn.ITHong.hibernate.base.hql.oneTomany.Classes(cid,cname) from Classes where cid=cid]
+4.测试
+	select new cn.ITHong.hibernate.base.hql.constructor.oneTomany.CLassView (c.cname,s.sname) from Student s left outer join fetch s.classes c
+	报错
+	org.hibernate.QueryException: query specified join fetching, but the owner of the fetched association was not present in the select list 
+	[FromElement{explicit,not a collection join,fetch join,fetch non-lazy properties,classAlias=c,role=null,tableName=CLASSES,tableAlias=classes1_,origin=STUDENT student0_,columns={student0_.CID ,className=cn.ITHong.hibernate.base.hql.oneTomany.Classes}}] 	
+	[select new cn.ITHong.hibernate.base.hql.constructor.oneTomany.CLassView (c.cname,s.sname) from cn.ITHong.hibernate.base.hql.oneTomany.Student s left outer join fetch s.classes c]
+	分析:
+	cn.ITHong.hibernate.base.hql.OneToManyByConstructorTest.queryClasses_Student_Select();	
+	结论:
+	关键: new+全类名和fetch 只能选择其中一种
