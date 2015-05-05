@@ -35,7 +35,7 @@ public class ManyToManyTest extends HibernateUtils {
 	 * 1、新建一个课程
 	 * */
 
-	@Test
+	 
 	public void testSave1() {
 
 		Course course = new Course("数学", "普通班");
@@ -47,7 +47,7 @@ public class ManyToManyTest extends HibernateUtils {
 	/**
 	 * 2、新建一个学生
 	 * */
-	@Test
+	 
 	public void testSave() {
 		Student student = new Student("李哲弘", "打篮球");
 		List<Student> students = new ArrayList<Student>();
@@ -59,7 +59,7 @@ public class ManyToManyTest extends HibernateUtils {
 	/**
 	 * 3、新建课程的同时新建学生 级联
 	 * */
-	@Test
+	 
 	public void testSave2() {
 		Student student = new Student("李哲弘", "打篮球");
 		Course course = new Course("数学", "普通班");
@@ -74,7 +74,7 @@ public class ManyToManyTest extends HibernateUtils {
 	/**
 	 * 4、已经存在一个课程，新建一个学生，建立课程和学生之间的关系
 	 * */
-	@Test
+	 
 	public void testSave3() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -95,7 +95,7 @@ public class ManyToManyTest extends HibernateUtils {
 	/**
 	 * 把一个学生加入到一些课程中 
 	 * */
-	@Test 
+	  
 	public void testSave4(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -110,7 +110,7 @@ public class ManyToManyTest extends HibernateUtils {
 	 * 把一个学生从一个课程转移到另一个课程
 	 * 先删除 后添加
 	 * */
-	@Test
+	 
 	public void testSave5(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();

@@ -29,7 +29,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testGet() 
 	*/
-	@Test
+	 
 	public void testGet() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -43,7 +43,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testLoad() 
 	*/
-	@Test
+	 
 	public void testLoad() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -58,7 +58,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testSave() 
 	*/
-	@Test
+	 
 	public void testSave() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -74,7 +74,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testUpdate() 
 	*/
-	@Test
+	 
 	public void testUpdate() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -90,7 +90,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testClear() 
 	*/
-	@Test
+	 
 	public void testClear() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -105,7 +105,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testClearTest() 
 	*/
-	@Test
+	 
 	public void testClearTest() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -123,7 +123,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testClearTest_2() 
 	*/
-	@Test
+	 
 	public void testClearTest_2() {
 		Session session  = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -142,7 +142,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testRefresh() 
 	*/
-	@Test
+	 
 	public void testRefresh(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -158,7 +158,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testFlush() 
 	*/
-	@Test
+	 
 	public void testFlush(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -177,7 +177,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testSaveBatch() 
 	*/
-	@Test
+	 
 	public void testSaveBatch(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -196,7 +196,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testSaveBatch_2() 
 	*/
-	@Test
+	 
 	public void testSaveBatch_2(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -219,7 +219,7 @@ public class SessionCacheTest extends HibernateUtils implements ICacheTest{
 	* <p>Description: </p>  
 	* @see cn.ITHong.hibernate.base.ICacheTest#testFlush_3() 
 	*/
-	@Test
+	 
 	public void testFlush_3(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();

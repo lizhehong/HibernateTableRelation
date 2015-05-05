@@ -18,7 +18,7 @@ public class HQLTest1 extends HibernateUtils{
 	/**
 	 * 需要Classes里面有带构造函数 且与SQL中 带的参数顺序一致
 	 * */
-	@Test
+	 
 	public void test(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -34,7 +34,7 @@ public class HQLTest1 extends HibernateUtils{
 	 * 通过自定义标签查询
 	 *  需要Classes里面有带构造函数 且与SQL中 带的参数顺序一致
 	 * */
-	@Test
+	 
 	public void test_2(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -49,7 +49,7 @@ public class HQLTest1 extends HibernateUtils{
 	 * 通过通配符查询
 	 *  需要Classes里面有带构造函数 且与SQL中 带的参数顺序一致
 	 * */
-	@Test
+	 
 	public void test_3(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -63,7 +63,7 @@ public class HQLTest1 extends HibernateUtils{
 	/**
 	 * 子查询 
 	 * */
-	@Test
+	 
 	public void test_4(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

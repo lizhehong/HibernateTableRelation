@@ -23,7 +23,7 @@ public class LazyTest extends HibernateUtils {
 	 * 3、在得到其一般属性的时候发出sql语句(请注意哦！！！！！)
 	 * 4、只针对一般属性有效，针对标识符属性是无效的 5、默认情况就是懒加载
 	 * */
-	@Test
+	 
 	public void test() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.load(Classes.class, 1L);
@@ -36,7 +36,7 @@ public class LazyTest extends HibernateUtils {
 	/**
 	 * 请对比test()
 	 * */
-	@Test
+	 
 	public void test1() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.get(Classes.class, 1L);
@@ -50,7 +50,7 @@ public class LazyTest extends HibernateUtils {
 	 * org.hibernate.LazyInitializationException: could not initialize proxy -
 	 * no Session
 	 * */
-	@Test
+	 
 	public void test3() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.load(Classes.class, 1L);
@@ -64,7 +64,7 @@ public class LazyTest extends HibernateUtils {
 	 * 测试条件： <set name="students" cascade="save-update" inverse="false"
 	 * lazy="true"> 集合延时加载 得出结论：load 执行后 只有当 要得到集合时才发sql 且 要便利之前
 	 * */
-	@Test
+	 
 	public void test4() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.load(Classes.class, 1L);
@@ -91,7 +91,7 @@ public class LazyTest extends HibernateUtils {
 	 * 测试条件： <set name="students" cascade="save-update" inverse="false"
 	 * lazy="true"> 比较test4() 得出结论 ：get一执行 就sql 且 持久化 一get集合 就发出sql
 	 * */
-	@Test
+	 
 	public void test5() {
 		Session session = sessionFactory.openSession();
 
@@ -130,7 +130,7 @@ public class LazyTest extends HibernateUtils {
 	 * 测试条件： <set name="students" cascade="save-update" inverse="false"
 	 * lazy="false"> 比较test4() 得出结论 ：只有到get集合的时候 才一起发出sql语句
 	 * */
-	@Test
+	 
 	public void test6() {
 		Session session = sessionFactory.openSession();
 
@@ -156,7 +156,7 @@ public class LazyTest extends HibernateUtils {
 	 * 测试条件： <set name="students" cascade="save-update" inverse="false"
 	 * lazy="false"> 比较test4() 得出结论 ：只有到get的时候 才一起发出sql语句
 	 * */
-	@Test
+	 
 	public void test7() {
 		Session session = sessionFactory.openSession();
 
@@ -183,7 +183,7 @@ public class LazyTest extends HibernateUtils {
 	 * lazy="extra"> 
 	 * 
 	 * */
-	@Test
+	 
 	public void test8() {
 		Session session = sessionFactory.openSession();
 
@@ -222,7 +222,7 @@ public class LazyTest extends HibernateUtils {
 	 * Hibernate: select count(SID) from STUDENT where CID =?
 	 * 3
 	 * */
-	@Test
+	 
 	public void test9() {
 		Session session = sessionFactory.openSession();
 
@@ -242,7 +242,7 @@ public class LazyTest extends HibernateUtils {
 	 *Hibernate: select students0_.CID as CID0_1_, students0_.SID as SID1_, students0_.SID as SID1_0_, students0_.SNAME as SNAME1_0_, students0_.DESCRIPTION as DESCRIPT3_1_0_, students0_.CID as CID1_0_ from STUDENT students0_ where students0_.CID=?
 	 *3
 	 * */
-	@Test
+	 
 	public void test10() {
 		Session session = sessionFactory.openSession();
 
@@ -262,7 +262,7 @@ public class LazyTest extends HibernateUtils {
 	 *Hibernate: select students0_.CID as CID0_1_, students0_.SID as SID1_, students0_.SID as SID1_0_, students0_.SNAME as SNAME1_0_, students0_.DESCRIPTION as DESCRIPT3_1_0_, students0_.CID as CID1_0_ from STUDENT students0_ where students0_.CID=?
 	 *3
 	 * */
-	@Test
+	 
 	public void test11() {
 		Session session = sessionFactory.openSession();
 

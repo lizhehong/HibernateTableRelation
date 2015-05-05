@@ -31,7 +31,7 @@ public class QueryCacheTest extends HibernateUtils {
 		    from
 		        CLASSES classes0_
 	 * */
-	@Test
+	 
 	public void testQuery(){
 		Session session = sessionFactory.openSession();
 		
@@ -49,7 +49,7 @@ public class QueryCacheTest extends HibernateUtils {
 	/**
 	 * 两条SQL 似乎没有查询缓存
 	 * */
-	@Test
+	 
 	public void testQuery_1(){
 		Session session = sessionFactory.openSession();
 		
@@ -67,7 +67,7 @@ public class QueryCacheTest extends HibernateUtils {
 	/**
 	 * 两条SQL语句
 	 * */
-	@Test
+	 
 	public void testQuery_2(){
 		Session session = sessionFactory.openSession();
 		
@@ -85,7 +85,7 @@ public class QueryCacheTest extends HibernateUtils {
 	/**
 	 * 两条SQL语句，没有查询缓存
 	 * */
-	@Test
+	 
 	public void testQuery_3(){
 		Session session = sessionFactory.openSession();
 		

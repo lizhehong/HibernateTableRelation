@@ -19,7 +19,7 @@ public class HQLTest extends HibernateUtils {
 	/**
 	 * cList 返回的是Class
 	 * */
-	@Test
+	 
 	public void test(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -31,7 +31,7 @@ public class HQLTest extends HibernateUtils {
 	/**
 	 * cList里面是Object[]
 	 * */
-	@Test
+	 
 	public void test_1(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -46,7 +46,7 @@ public class HQLTest extends HibernateUtils {
 	/**
 	 * cList里面是Object[] 迭代出相当于classes的object[]
 	 * */
-	@Test
+	 
 	public void test_1_1(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -63,7 +63,7 @@ public class HQLTest extends HibernateUtils {
 	 * 第一次迭代是 代表 迭代存放属性的Object[]
 	 * 第二次迭代是 代表 迭代出属性
 	 * */
-	@Test
+	 
 	public void test_1_2(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

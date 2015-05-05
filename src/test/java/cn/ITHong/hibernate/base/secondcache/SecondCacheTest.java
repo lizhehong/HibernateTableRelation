@@ -27,7 +27,7 @@ public class SecondCacheTest extends HibernateUtils implements ICacheTest{
 	 * 则第二个classes = (Classes) session.get(Classes.class, 1L);执行后会发出SQL
 	 * session.get	把数据存在一级缓存和二级缓存	优先查找一级 然后二级 最后才数据库
 	 * */
-	@Test
+	 
 	public void testGet() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.get(Classes.class, 1L);
@@ -46,7 +46,7 @@ public class SecondCacheTest extends HibernateUtils implements ICacheTest{
 	 * 则第二个classes = (Classes) session.load(Classes.class, 1L);执行后会发出SQL
 	 * session.get	把数据存在一级缓存和二级缓存	优先查找一级 然后二级 最后才数据库
 	 * */
-	@Test
+	 
 	public void testLoad() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.load(Classes.class, 1L);
@@ -59,7 +59,7 @@ public class SecondCacheTest extends HibernateUtils implements ICacheTest{
 		session.close();
 		
 	}
-	@Test
+	 
 	public void testSave() {
 		// TODO Auto-generated method stub
 		
@@ -69,7 +69,7 @@ public class SecondCacheTest extends HibernateUtils implements ICacheTest{
 	 * session.get(Classes.class, classes.getCid());
 	 * 因为最后这一句 直接发出SQL语句了
 	 * */
-	@Test
+	 
 	public void testUpdate() {
 		Session session = sessionFactory.openSession();
 		Classes classes = new Classes();
@@ -86,42 +86,42 @@ public class SecondCacheTest extends HibernateUtils implements ICacheTest{
 		session.close();
 		
 	}
-	@Test
+	 
 	public void testClear() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testClearTest() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testClearTest_2() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testRefresh() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testFlush() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testSaveBatch() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testSaveBatch_2() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Test
+	 
 	public void testFlush_3() {
 		// TODO Auto-generated method stub
 		

@@ -15,7 +15,7 @@ public class OneToOne extends HibernateUtils{
 	/**
 	 * 尝试创建表
 	 * */
-	@Test
+	 
 	public void test() {
 		Session session = sessionFactory.openSession();
 		

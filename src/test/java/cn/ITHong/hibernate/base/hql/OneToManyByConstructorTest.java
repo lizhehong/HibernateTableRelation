@@ -34,7 +34,7 @@ public class OneToManyByConstructorTest extends HibernateUtils {
 	 * 	1,2只能选择其中一种
 	 * 
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Select_Error() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -47,7 +47,7 @@ public class OneToManyByConstructorTest extends HibernateUtils {
 	/**
 	 * 返回指定的列名数据到JavaBean中 也就是ClassesView
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Select_New() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -60,7 +60,7 @@ public class OneToManyByConstructorTest extends HibernateUtils {
 	/**
 	 * 返回有包含结构的
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Select_Fecth() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

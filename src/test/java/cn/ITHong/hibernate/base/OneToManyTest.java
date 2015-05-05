@@ -33,7 +33,7 @@ public class OneToManyTest extends HibernateUtils {
 	}
 	
 	
-	@Test
+	 
 	/**
 	 * 即 学生保存 班级 
 	 * 也可以
@@ -81,7 +81,7 @@ public class OneToManyTest extends HibernateUtils {
 			Hibernate: update STUDENT set SNAME=?, DESCRIPTION=?, CID=? where SID=?
 			Hibernate: update STUDENT set CID=? where SID=?
 	 * */
-	@Test
+	 
 	public void testSaveStudent_Cascade_Classes_Save_1() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -113,7 +113,7 @@ public class OneToManyTest extends HibernateUtils {
 			name="classes" cascade="save-update" column="CID">
 		</many-to-one>
 	 * */
-	@Test
+	 
 	public void testSaveStudent_Cascade_Classes_DeleteStudent() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -135,7 +135,7 @@ public class OneToManyTest extends HibernateUtils {
             <one-to-many class="cn.ITHong.hibernate.Base.Student"/>
         </set>
 	 * */
-	@Test
+	 
 	public void testSaveStudent_Cascade_Classes_DeleteClasses() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -158,7 +158,7 @@ public class OneToManyTest extends HibernateUtils {
         </set>
      *删除有有缺点 发出 根据SID 查student  而不是 根据 CID  删除student 所以语句臃肿 缺点 sql不可控 
 	 * */
-	@Test
+	 
 	public void testDeleteClasses_cascade() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -184,7 +184,7 @@ public class OneToManyTest extends HibernateUtils {
 	 Hibernate: delete from STUDENT where SID=?
 	 Hibernate: delete from CLASSES where CID=?	
 	 *  */
-	@Test
+	 
 	public void testDeleteClasses_allINClasses() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -210,7 +210,7 @@ public class OneToManyTest extends HibernateUtils {
 		Hibernate: delete from CLASSES where CID=?
 		删除班级 保留学生 删除学生的班级号
 	 *  */
-	@Test
+	 
 	public void testDeleteClasses_SaveUpdateINClasses() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -223,7 +223,7 @@ public class OneToManyTest extends HibernateUtils {
 		System.out.println("个人觉得这种设置 符合 班级 -学生 模型");
 	
 	}
-	@Test
+	 
 	public void testDeleteClasses_Student(){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();

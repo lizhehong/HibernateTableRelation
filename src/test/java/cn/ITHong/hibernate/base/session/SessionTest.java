@@ -31,7 +31,7 @@ public class SessionTest extends HibernateUtils{
 	 * 
 	 * 总结：session和transaction绑定在一起了 
 	 * */
-	@Test
+	 
 	public void testGetCurrentSession(){
 		Session session = sessionFactory.getCurrentSession();		
 		Transaction transaction = session.beginTransaction();

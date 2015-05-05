@@ -20,7 +20,7 @@ public class ManyToManyTest extends HibernateUtils{
 	/**
 	 * 多对多
 	 * */
-	@Test
+	 
 	public void testQueryCourse_Student() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -38,7 +38,7 @@ public class ManyToManyTest extends HibernateUtils{
 	 * 消除重复前	第一个HQL 1,2,1,3,1	个数=5 		第二个HQL 1,1,1,2,3	个数=5
 	 * 消除重复后	第一个HQL	1,3,2		个数=3 		第二个HQL 1,3,2,		个数=3
 	 * */
-	@Test
+	 
 	public void testQUeryClasses_Student_Course(){
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

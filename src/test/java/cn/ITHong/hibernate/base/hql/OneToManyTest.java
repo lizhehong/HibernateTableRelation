@@ -24,7 +24,7 @@ public class OneToManyTest extends HibernateUtils {
 	 * 等值连接测试 cList里面是Object[]
 	 * 下列的情况 的产生 所以等值连接在hibernate很少用
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_EQ() {
 		Session session = sessionFactory.getCurrentSession();
 		Student student = null;
@@ -54,7 +54,7 @@ public class OneToManyTest extends HibernateUtils {
 	 * 但是HQL中内连接是不需要加入条件语句的
 	 * 但是内连接所等到的觉得 cList是Object[]
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_INNER() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -71,7 +71,7 @@ public class OneToManyTest extends HibernateUtils {
 	 * 迫切内连接
 	 * 它的返回结果就是以对象的形式的
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_INNER_Fetch() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -84,7 +84,7 @@ public class OneToManyTest extends HibernateUtils {
 	/**
 	 * 左外连接也是返回数组结果
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Left_Outer_Join() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -98,7 +98,7 @@ public class OneToManyTest extends HibernateUtils {
 	 * 迫切左外连接也是返回对象结果
 	 * 记住返回list里面的是Classes
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Left_Outer_Join_Fetch() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -111,7 +111,7 @@ public class OneToManyTest extends HibernateUtils {
 	 * 迫切左外连接也是返回对象结果
 	 * 记住返回list里面是Student
 	 * */
-	@Test
+	 
 	public void queryClasses_Student_Left_Outer_Join_Fetch_1() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

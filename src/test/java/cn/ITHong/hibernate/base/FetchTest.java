@@ -30,7 +30,7 @@ public class FetchTest extends HibernateUtils {
 	 * 在Classes.hbm.xml
 	 * <set name="students"  cascade="save-update" inverse="false" lazy="true">
 	 * */
-	@Test
+	 
 	public void test() {
 		Session session = sessionFactory.openSession();
 		List<Classes> cList  = session.createQuery("from Classes").list();
@@ -54,7 +54,7 @@ public class FetchTest extends HibernateUtils {
 	   Hibernate: select students0_.CID as CID0_1_, students0_.SID as SID1_, students0_.SID as SID1_0_, students0_.SNAME as SNAME1_0_, students0_.DESCRIPTION as DESCRIPT3_1_0_, students0_.CID as CID1_0_ from STUDENT students0_ where students0_.CID=?
 	 * 
 	 * */
-	@Test
+	 
 	public void test1() {
 		Session session = sessionFactory.openSession();
 		List<Classes> cList  = session.createQuery("from Classes where CID in (1,2,3)").list();
@@ -111,7 +111,7 @@ public class FetchTest extends HibernateUtils {
 	 * SQL 在fetch属性设置为 subselect后 数量就只有两条
 	 * 但是 具有子查询SQL 使用fetch="join" 是不起作用的
 	 * */
-	@Test
+	 
 	public void test3() {
 		Session session = sessionFactory.openSession();
 		List<Classes> cList  = session.createQuery("from Classes where CID in (1,2,3)").list();
@@ -147,7 +147,7 @@ public class FetchTest extends HibernateUtils {
 	    where
 	        classes0_.CID=?
 	 * */
-	@Test
+	 
 	public void test4() {
 		Session session = sessionFactory.openSession();
 		Classes classes = (Classes) session.get(Classes.class, 1L);
